@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Ежедневный отчет</title>
+</head>
+<body>
+<h1>Ежедневный отчет</h1>
+
+<h3>Общая сумма платежей за вчерашний день:</h3>
+<p>День: {{yesterday_payments.get('date', 'Нет данных')}}</p>
+<p>Сумма: {{yesterday_payments.get('sum', 'Нет данных')}}</p>
+
+<h3>Общая сумма платежей за текущий месяц:</h3>
+<p>День: {{last_month_payments.get('date', 'Нет данных')}}</p>
+<p>Сумма: {{last_month_payments.get('sum', 'Нет данных')}}</p>
+
+<h3>Общее кол-во новых пользователей за вчерашний день:</h3>
+<p>День: {{yesterday_users.get('date', 'Нет данных')}}</p>
+<p>Колличество новых пользователей: {{yesterday_users.get('sum', 'Нет данных')}}</p>
+<p>Бесплатных отчетов: {{yesterday_users.get('not_paid', 'Нет данных')}}</p>
+<p>Купленных отчетов: {{yesterday_users.get('paid', 'Нет данных')}}</p>
+
+<h3>Общее кол-во пользователей за весь период:</h3>
+<p>Всего пользователей: {{total_users.get('sum', 'Нет данных')}}</p>
+<p>Всего отчетов: {{total_users.get('report_sum', 'Нет данных')}}</p>
+<p>Бесплатных отчетов: {{total_users.get('not_paid', 'Нет данных')}}</p>
+<p>Купленных отчетов: {{total_users.get('paid', 'Нет данных')}}</p>
+
+<h3>Общее кол-во отчетов за вчерашний день:</h3>
+<p>День: {{yesterday_reports.get('date', 'Нет данных')}}</p>
+<p>Всего отчетов: {{yesterday_reports.get('sum', 'Нет данных')}}</p>
+<p>Бесплатных отчетов: {{yesterday_reports.get('not_paid', 'Нет данных')}}</p>
+<p>Купленных отчетов: {{yesterday_reports.get('paid', 'Нет данных')}}</p>
+
+<h3>Общее кол-во отчетов за весь период:</h3>
+<p>От: {{total_reports.get('date', 'Нет данных')}}</p>
+<p>Всего отчетов: {{total_reports.get('sum', 'Нет данных')}}</p>
+<p>Бесплатных отчетов: {{total_reports.get('not_paid', 'Нет данных')}}</p>
+<p>Купленных отчетов: {{total_reports.get('paid', 'Нет данных')}}</p>
+</body>
+</html>
