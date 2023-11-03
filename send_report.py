@@ -27,6 +27,11 @@ def get_database_connection():
     )
 
 
+# TEMPLATE RENDER
+env = Environment(loader=FileSystemLoader('templates'))
+template = env.get_template('report_template.html')
+
+
 # FUNCTION SEND REPORT
 def send_report():
     conn = get_database_connection()
@@ -165,11 +170,7 @@ def send_report():
     else:
         print("Error receiving token:", response.status_code, response.text)
 
-    # CREATION TEMPLATES
-    file_loader = FileSystemLoader('templates')
-    env = Environment(loader=file_loader)
-    template = env.get_template('report_template.html')
-
+    # CREATION TEMPLATE
     yesterday_payments = formatted_results[0]
     last_month_payments = formatted_results[1]
     yesterday_users = formatted_results[2]
@@ -177,14 +178,16 @@ def send_report():
     yesterday_reports = formatted_results[4]
     total_reports = formatted_results[5]
 
-    html_content = template.render({
+    context = {
         'yesterday_payments': yesterday_payments,
         'last_month_payments': last_month_payments,
         'yesterday_users': yesterday_users,
         'total_users': total_users,
         'yesterday_reports': yesterday_reports,
         'total_reports': total_reports
-    })
+    }
+
+    html_content = template.render(context)
 
     # SEND REPORT TO EMAIL
     subject = 'Report'
